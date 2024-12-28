@@ -5,6 +5,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+// TODO LIST
+// TODO: Make it read entire file.
+// TODO: Parse entire vault files.
 char* version = "0.0.1";
 typedef struct {
 	uint32_t folder_ID;
@@ -44,13 +48,13 @@ char* inttobin(uint64_t inp) {
 	}
 	out[0] = '\0';
 
-	while (x > 1) {
+	while (x >= 1) {
 		if (inp >= x) {
 			inp -= x;
-			strcat_s(out, 65, "1");
+			strcat(out, "1");
 		}
 		else {
-			strcat_s(out, 65, "0");
+			strcat(out, "0");
 		}
 		x /= 2;
 	}
