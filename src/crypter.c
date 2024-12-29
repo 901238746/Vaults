@@ -1,13 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include "stack.h"
 
-struct registerintdataintid {    int data;    int ID;};struct registerchardataintid {    int data;    int ID;};struct registerchardatacharid {    int data;    int ID;};struct registercharidintdata {    int data;    int ID;};struct registerintdataintid register1 = {0, 1};struct registerintdataintid register2 = {0, 1};struct registerintdataintid register3 = {0, 1};struct registerintdataintid register4 = {0, 1};struct registerchardataintid register5 = {0, 1};struct registerchardataintid register6 = {0, 1};struct registerchardataintid register7 = {0, 1};struct registerchardataintid register8 = {0, 1};struct registerchardatacharid register9 = {0, 1};struct registerchardatacharid register10 = {0, 1};struct registerchardatacharid register11 = {0, 1};struct registerchardatacharid register12 = {0, 1};struct registercharidintdata register13 = {0, 1};struct registercharidintdata register14 = {0, 1};struct registercharidintdata register15 = {0, 1};struct registercharidintdata register16 = {0, 1};
-/*register1.data = 21;
-printf("\nRegister1 ID: %d", register1.ID);
-printf("\nRegister1 Data: %d", register1.data);*/
+char stack1[4096];
 
-// Function to convert binary string to decimal
+int power(int x, int y) {
+    int output = 1;
+    for (int i = 0; i < y; i++) {
+        output *= x;
+    }
+    return output;
+}
 int bintodecimal(char inp[]) {
     int out = 0;
     int length = strlen(inp);
@@ -74,16 +80,13 @@ void printLetterList(char letter) {
     
     // If it's a letter, print a list of letters starting from it
     if (letter >= 'A' && letter <= 'Z') {
-        printf("[");
         for (char i = letter; i <= 'Z'; ++i) {
-            printf("'%c'", i);
             if (i != 'Z') {
-                printf(", ");
+                //printf(", ");
             }
         }
-        printf("]\n");
     } else {
-        printf("[Invalid Letter]\n");
+        return;
     }
 }
 
@@ -93,6 +96,10 @@ char getFirstLetter(char letter) {
 
     // Return the letter itself (since we are considering the first letter in the list)
     if (letter >= 'A' && letter <= 'Z') {
+        char character = (char) letter;
+        appendtostack(stack1, (char) character);
+        //printf("%", getfromstack(character));
+        printf("\nSTACK1\n%s\nFIRSTLETTERI: %d\n\n", stack1, letter);
         return letter;
     }
     return '\0'; // Invalid letter if not in A-Z
@@ -111,25 +118,33 @@ void processString(char* str) {
     }
 
     // Print the list of first letters
-    printf("List of first letters: [");
+    //printf("List of first letters: [");
     for (int i = 0; i < index; i++) {
-        printf("'%c'", firstLetters[i]);
+        //printf("'%c'", firstLetters[i]);
         if (i != index - 1) {
-            printf(", ");
+            //printf(", ");
         }
     }
-    printf("]\n");
+    //printf("]\n");
 }
 void Listify(char* input) {
     printf("Processing string: %s\n", input);
     processString(input);
 }
+char* ListifyToStack(char* List) {
+    // test
+}
 
 
-char* Delistify(const char* listed) {
+/*char* Delistify(const char* listed) {
     char* unlisted = malloc(sizeof(listed));
     for (int i = sizeof(listed); i > 0; i--) {
         strcat(unlisted, listed[i]);
     }
     return unlisted;
+}*/
+
+int main() {
+    Listify("DEF");
+    printf("%s", getfromstack(stack));
 }

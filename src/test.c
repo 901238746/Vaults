@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
+
 void printLetterList(char letter) {
     // Make sure the letter is uppercase for simplicity
     letter = toupper(letter);
@@ -55,7 +56,7 @@ void processString(char* str) {
 }
 
 int main() {
-    char input[] = "ABC"; // Example string
+    char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Example string
     printf("Processing string: %s\n", input);
     processString(input);
     return 0;
