@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+
 // TODO LIST
 // TODO: Make it read entire file.
 // TODO: Parse entire vault files.

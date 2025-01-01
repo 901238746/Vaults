@@ -37,6 +37,7 @@ char* getfromstack(char stack[]) {
 }
 
 char* appendtostack(char stack[], char toappend[]) {
+    if (strcmp(stack, "") == 1)
     strcat(stack, "→");
     strcat(stack, toappend);
     return stack;
